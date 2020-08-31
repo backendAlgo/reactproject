@@ -1,26 +1,37 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
+import Person from './person/Person'
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React is it online editable
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  state = {
+    persons: [
+      {name: 'Max', age: 28},
+      {name: 'Manu', age: 29},
+      {name: 'Stephanie', age: 26},
+    ],
+    otherState: "some other value"
+  }
+  
+  switchNameHandler = () => {
+    this.setState({
+      persons: [
+        {name: 'Maxmillian', age: 28},
+        {name: 'Manu', age: 29},
+        {name: 'Stephanie', age: 26},
+      ]
+    })
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <h1>Hi, I'm a React App</h1>
+        <p>This is really working!</p>
+        <button onClick={this.switchNameHandler}>Switch Name</button>
+        <Person name={this.state.persons[0].name} age={this.state.persons[0].age} >My Hobibes: Racing</Person>
+      </div>
+    );
+  } 
 }
 
 export default App;
